@@ -9,6 +9,11 @@ import { MapsPage } from './../pages/maps/maps';
 import { TutorialPage } from './../pages/tutorial/tutorial';
 import { MyApp } from './app.component';
 
+//Firebase config
+import { FIREBASE_CONFIG } from './app.firebase.config';
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireAuthModule } from 'angularfire2/auth';
+import { AngularFirestoreModule } from 'angularfire2/firestore';
 
 @NgModule({
   declarations: [
@@ -20,7 +25,10 @@ import { MyApp } from './app.component';
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    AngularFireModule.initializeApp(FIREBASE_CONFIG),
+    AngularFireAuthModule,
+    AngularFirestoreModule.enablePersistence() //.enablePersistence() 
   ],
   bootstrap: [IonicApp],
   entryComponents: [

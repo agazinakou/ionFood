@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { MapsPage } from './../maps/maps';
 
 /**
  * Generated class for the TutorialPage page.
@@ -15,11 +16,24 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class TutorialPage {
 
+  collection : any;
+
   constructor(public navCtrl: NavController, public navParams: NavParams) {
+    this.collection = [{
+      title : 'Location',
+      img: 'assets/imgs/locations.png',
+    }, {
+      title : 'Location',
+      img: 'assets/imgs/signpost.png',      
+    }]
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad TutorialPage');
+  }
+
+  go(){
+    this.navCtrl.setRoot(MapsPage);
   }
 
 }
