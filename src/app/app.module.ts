@@ -1,3 +1,7 @@
+import { GivePage } from './../pages/give/give';
+import { BlogPage } from './../pages/blog/blog';
+import { TchatPage } from './../pages/tchat/tchat';
+import { AddPage } from './../pages/add/add';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -8,12 +12,14 @@ import { LoginPage } from './../pages/login/login';
 import { MapsPage } from './../pages/maps/maps';
 import { TutorialPage } from './../pages/tutorial/tutorial';
 import { MyApp } from './app.component';
+import { Geolocation } from '@ionic-native/geolocation';
 
 //Firebase config
 import { FIREBASE_CONFIG } from './app.firebase.config';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
+import { IonicStorageModule } from '@ionic/storage';
 
 @NgModule({
   declarations: [
@@ -22,11 +28,16 @@ import { AngularFirestoreModule } from 'angularfire2/firestore';
     MapsPage,
     LoginPage,
     TutorialPage,
+    AddPage,
+    TchatPage,
+    BlogPage,
+    GivePage,
   ],
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
     AngularFireModule.initializeApp(FIREBASE_CONFIG),
+    IonicStorageModule.forRoot(),
     AngularFireAuthModule,
     AngularFirestoreModule.enablePersistence() //.enablePersistence() 
   ],
@@ -37,10 +48,15 @@ import { AngularFirestoreModule } from 'angularfire2/firestore';
     MapsPage,
     LoginPage,
     TutorialPage,
+    AddPage,
+    TchatPage,
+    BlogPage,
+    GivePage,
   ],
   providers: [
     StatusBar,
     SplashScreen,
+    Geolocation,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

@@ -1,4 +1,5 @@
 export interface Items {
     description: string;
-    itemid: number;
+    lat: number;
+    lng: number;
 }

@@ -1,0 +1,35 @@
+
+ion-header {
+  //border-top: solid 8px #005f64;
+
+
+  .contoles {
+    background: #ffffff;
+    display: inline-block;
+    padding: 2px;
+    border-radius: 50px;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.38);
+    button.button {
+      height: 2.4em !important;
+      margin: 0;
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+  }
+  .avatar {
+    background: none;
+    .item-inner {
+      ion-label {
+        p,
+        h1,
+        h2,
+        h3,
+        h3 {
+          color: #fff;
+        }
+      }
+      border-bottom: none !important;
+    }
+  }
+}
+

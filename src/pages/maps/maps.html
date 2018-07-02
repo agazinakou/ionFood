@@ -1,50 +1,39 @@
-<!--
-  Generated template for the MapsPage page.
 
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
+
+<ion-content no-bounce fullscreen>
 <ion-header>
 
-  <ion-navbar>
-    <ion-title>maps</ion-title>
+  <ion-navbar color="transparent">
+
+    <div class="contoles">
+      <div ion-button clear class="user">
+        <img src="assets/imgs/no_user.png" style="border-radius:50%;height: 35px;width: 35px">
+      </div>
+      <button ion-button round>Maps</button>
+      <button ion-button round clear (tap)="tchat()">Tchat</button>
+    </div>
+
   </ion-navbar>
 
 </ion-header>
 
-
-<ion-content padding>
-  <!--button ion-button (tap)="add()">add</button>
+  <div id="map" #map></div>
   
-  <div-- *ngFor="let item of collection | async">
-      <h1>{{ item.itemid}}</h1>
-      <p>{{ item.description}}</p>
-  </div-->
+  <ion-fab right top>
+    <button ion-fab color="light">
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-fab-list side="bottom">
+      <button ion-fab (tap)="add()" color="primary"><ion-icon name="add"></ion-icon></button>
+      <button ion-fab><ion-icon name="share"></ion-icon></button>
+    </ion-fab-list>
+  </ion-fab>
 
-  <!--div id="wrapper">
-
-    <div #map id="map"></div>
-
-    <div class="map-bottom request-controls">
-
-      <ion-row>
-        <ion-col>
-          <ion-list margin-bottom>
-            <ion-item tappable (tap)="showDetail()">
-              <ion-thumbnail big item-left>
-                <img src="{{image}}">
-              </ion-thumbnail>
-              <h2>{{name}} </h2>
-              <p>{{description}}</p>
-              <button ion-button clear item-right>Détails</button>
-            </ion-item>
-          </ion-list>
-          <button ion-button full color="coliba" (tap)="calculateAndDisplayRoute()">Voir le trajet</button>
-        </ion-col>
-      </ion-row>
-
-    </div>
-
-  </div-->
+  <ion-footer>
+    <button ion-button block icon-left color="primary" (tap)="give()">
+      <ion-icon name="heart"></ion-icon>
+      Offrir un Garba
+    </button>
+  </ion-footer>
 
 </ion-content>
