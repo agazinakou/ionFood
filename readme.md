@@ -6,6 +6,14 @@ Simple, utile et performant.
 
 GarbaMap est cool et fun. Il s'agit d'une application mobile pour Android et iOS qui permet d'afficher tous simplement les garbaromes sur une carte :D. 
 
+
+## Fonctionnalités
+1. Géolocation et affichage de points sur une carte
+2. Realtime chat - Group Chat
+3. Faire un don avec [CinetPay](https://cinetpay.com/) - Mobile Money payment
+4. Upload Pictures
+5. ...
+
 ## Installation
 1. Installer [Node js](http://nodejs.org/)
 2. Installer [Ionic Framework](https://ionicframework.com/)
@@ -13,12 +21,22 @@ GarbaMap est cool et fun. Il s'agit d'une application mobile pour Android et iOS
 npm install -g ionic cordova
 ```
 3. Créer un projet sur [Firebase](https://firebase.google.com/)
-4. Télécharger ou cloner le repertoire 
+4. Utiliser cette configuration dans développer/database/règles
+```bash
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /{document=**} {
+      allow read, write;
+    }
+  }
+}
+```
+5. [Télécharger](https://github.com/agazinakou/ionFood.git) ou cloner le repertoire 
 ```bash
 git clone https://github.com/agazinakou/ionFood.git
 ```
-5. Cliquer sur "Ajouter Firebase à votre application Web" dans la console firebase
-6. Copier et coller le contenu dans src/app/app.firebase.config.ts
+6. Cliquer sur "Ajouter Firebase à votre application Web" dans la console firebase
+7. Copier et coller le contenu dans src/app/app.firebase.config.ts
 ```bash
 export const FIREBASE_CONFIG = {
     apiKey: "XXXXXXXXXXXX",
@@ -29,11 +47,11 @@ export const FIREBASE_CONFIG = {
     messagingSenderId: "XXXXXXXXXXXX"
 };
 ```
-7. Utiliser le terminal et aller dans le repertoire du projet
+8. Utiliser le terminal et aller dans le repertoire du projet
 ```bash
 npm install
 ```
-8. Installer sur son téléphone :D
+9. Installer sur son téléphone :D
 ```bash
 ionic cordova platform add android
 ionic cordova build android
