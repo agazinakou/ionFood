@@ -1,27 +1,27 @@
 # GarbaMap
 
-Simple, useful and efficient.
+Simple, utile et performant.
 
 ## Pourquoi ?
 
-GarbaMap is cool and fun. This is a mobile application for Android and iOS that simply displays all the garbaromes on a map. :D
+GarbaMap est cool et fun. Il s'agit d'une application mobile pour Android et iOS qui permet d'afficher tous simplement les garbaromes sur une carte :D. 
 
 
-## Features
-1. Geolocation and display of points on a map
+## Fonctionnalités
+1. Géolocation et affichage de points sur une carte
 2. Realtime chat - Group Chat
-3. Make a donation with [CinetPay](https://cinetpay.com/) - Mobile Money payment
+3. Faire un don avec [CinetPay](https://cinetpay.com/) - Mobile Money payment
 4. Upload Pictures
 5. ...
 
-## Setup
-1. Install [Node js](http://nodejs.org/)
-2. install [Ionic Framework](https://ionicframework.com/)
+## Installation
+1. Installer [Node js](http://nodejs.org/)
+2. Installer [Ionic Framework](https://ionicframework.com/)
 ```bash
 npm install -g ionic cordova
 ```
-3. Create your [Firebase](https://firebase.google.com/) project
-4. Use this configuration for use Firestore database in developer/database/rules
+3. Créer un projet sur [Firebase](https://firebase.google.com/)
+4. Utiliser cette configuration dans développer/database/règles
 ```bash
 service cloud.firestore {
   match /databases/{database}/documents {
@@ -31,12 +31,12 @@ service cloud.firestore {
   }
 }
 ```
-5. [Download](https://github.com/agazinakou/ionFood.git) or clone repository 
+5. [Télécharger](https://github.com/agazinakou/ionFood.git) ou cloner le repertoire 
 ```bash
 git clone https://github.com/agazinakou/ionFood.git
 ```
-6. Click on "Add Firebase to your Web application" in the firebase console
-7. Copy and paste the content into src/app/app.firebase.config.ts
+6. Cliquer sur "Ajouter Firebase à votre application Web" dans la console firebase
+7. Copier et coller le contenu dans src/app/app.firebase.config.ts
 ```bash
 export const FIREBASE_CONFIG = {
     apiKey: "XXXXXXXXXXXX",
@@ -47,17 +47,17 @@ export const FIREBASE_CONFIG = {
     messagingSenderId: "XXXXXXXXXXXX"
 };
 ```
-8. Use the terminal and go to the project directory
+8. Utiliser le terminal et aller dans le repertoire du projet
 ```bash
 npm install
 ```
-9. Installing on your phone :D
+9. Installer sur son téléphone :D
 ```bash
 ionic cordova platform add android
 ionic cordova build android
 ```
 
-## Download
+## Télécharger
 
  - [Android](https://www.google.com/)
  - [iOS](https://www.google.com/)
