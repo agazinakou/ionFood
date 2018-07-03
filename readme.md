@@ -1,4 +1,5 @@
 # GarbaMap
+<img src="logo.jpg" height="100" />
 
 Simple, useful and efficient.
 
