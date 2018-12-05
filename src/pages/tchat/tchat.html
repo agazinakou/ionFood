@@ -8,6 +8,11 @@
 
   <ion-navbar color="primary">
     <ion-title>Garbadrome</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (tap)="logout()">
+        <ion-icon name="log-out"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
 
 </ion-header>
@@ -23,15 +28,22 @@
         <div class="chat-message" text-right *ngIf="chat.user === user">
           <div class="right-bubble">
             <span class="msg-name">Moi</span>
-            <span class="msg-date">{{chat.sendDate | date:'short'}}</span>
+            <span class="msg-date">{{chat.sendDate | date:"H:m:s"}}</span>
             <p text-wrap>{{chat.message}}</p>
+            <ion-item  *ngIf="chat.image != 'undefined'">
+              <img src="{{chat.image}}" style="width: 60%;text-align: center">              
+            </ion-item>
+            
           </div>
         </div>
         <div class="chat-message" text-left *ngIf="chat.user !== user">
           <div class="left-bubble">
             <span class="msg-name">{{chat.user}}</span>
-            <span class="msg-date">{{chat.sendDate | date:'short'}}</span>
+            <span class="msg-date">{{chat.sendDate | date:"H:m:s"}}</span>
             <p text-wrap>{{chat.message}}</p>
+            <ion-item  *ngIf="chat.image != 'undefined'">
+              <img src="{{chat.image}}" style="width: 60%;text-align: center">              
+            </ion-item>
           </div>
         </div>
       </ng-template>
@@ -42,10 +54,10 @@
     <ion-row>
       <ion-item no-lines class="file_send">
         <ion-thumbnail item-right>
-          <img src="assets/imgs/no_image.png">
+          <img src="{{ image }}">
         </ion-thumbnail>
-        <h2>kk</h2>
-        <p>k</p>
+        <h2></h2>
+        <p></p>
         <button ion-button icon-only item-start large clear color="danger" class="close" (tap)="close()">
           <ion-icon name="close"></ion-icon>
         </button>

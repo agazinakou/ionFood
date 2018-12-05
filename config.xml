@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="io.ionic.starter" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="io.ionic.garba" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>GarbaMap</name>
     <description>Made with heart by Lamine AZINAKOU</description>
     <author email="agazinakou@gmail.com" href="http://azinakou.com/">Lamine AZINAKOU</author>
@@ -88,4 +88,6 @@
     <plugin name="cordova-plugin-geolocation" spec="^4.0.1">
         <variable name="GEOLOCATION_USAGE_DESCRIPTION" value="To locate you" />
     </plugin>
+    <plugin name="cordova-plugin-camera" spec="^4.0.3" />
+    <engine name="ios" spec="~4.5.5" />
 </widget>

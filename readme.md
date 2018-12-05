@@ -5,6 +5,8 @@ Simple, useful and efficient.
 ## Pourquoi ?
 
 GarbaMap is cool and fun. This is a mobile application for Android and iOS that simply displays all the garbaromes on a map. :D
+<img src="1.png" height="300" />
+<img src="2.png" height="300" />
 
 
 ## Features

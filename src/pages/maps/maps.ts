@@ -11,11 +11,7 @@ import { Observable } from 'rxjs/Observable';
 import { Items } from './../../models/items';
 import { Storage } from '@ionic/storage';
 
-
-
-
 declare var google;
-
 
 @IonicPage()
 @Component({
@@ -24,9 +20,9 @@ declare var google;
 })
 export class MapsPage {
 
-  itemsCollection: AngularFirestoreCollection<Items>; //Firestore collection
-  items: Observable<Items[]>; // read collection
-  collection: any; // read collection
+  itemsCollection: AngularFirestoreCollection<Items>;
+  items: Observable<Items[]>; 
+  collection: any; 
 
 
   @ViewChild('map') mapElement: ElementRef;
@@ -87,6 +83,7 @@ export class MapsPage {
   }
 
   addMarkersToMap() {
+
     for (let item of this.arr) {
       console.log(item);
       var position = new google.maps.LatLng(item.lat, item.lng);
@@ -96,27 +93,36 @@ export class MapsPage {
         markerSelected: true,
         description: item.description,
         name: item.name,
-        //**** Custom Marker Symbols ****/
-        //icon:  'assets/red_pin72x96.png'
-        icon: {
-          url: 'assets/red_pin72x96.png',
-          //The size image file.
-          size: new google.maps.Size(72, 96),
-          // we want to render @ 30x30 logical px (@2x dppx or 'Retina')
-          scaledSize: new google.maps.Size(40, 52),
-          //The point on the image to measure the anchor from. 0, 0 is the top left.
-          origin: new google.maps.Point(0, 0),
-          //The x y coordinates of the anchor point on the marker. e.g. If your map marker was a drawing pin then the anchor would be the tip of the pin.
-          anchor: new google.maps.Point(20, 40),
-          labelOrigin: new google.maps.Point(20, 12)
-        },
+
         anchorPoint: new google.maps.Point(0, -40)
       });
+
       mapMarker.setMap(this.map);
       this.addInfoWindowToMarker(mapMarker);
       this.map.setCenter(position);
     }
 
+    this.geolocation.getCurrentPosition().then((resp) => {
+      var center = {
+        lat: resp.coords.latitude,
+        lng: resp.coords.longitude
+      }
+      var cityCircle = new google.maps.Circle({
+        strokeColor: '#ff0000',
+        strokeOpacity: 0.2,
+        strokeWeight: 2,
+        fillColor: '#ff0000',
+        fillOpacity: 0.35,
+        center: center,
+        radius: 3000,
+        map: this.map,
+        position: position,
+      });
+      console.log(cityCircle);
+      cityCircle.setMap(this.map);
+    }).catch((error) => {
+      console.log('Error getting location', error);
+    });
   }
 
 

@@ -13,6 +13,7 @@ import { MapsPage } from './../pages/maps/maps';
 import { TutorialPage } from './../pages/tutorial/tutorial';
 import { MyApp } from './app.component';
 import { Geolocation } from '@ionic-native/geolocation';
+import { Camera } from '@ionic-native/camera';
 
 //Firebase config
 import { FIREBASE_CONFIG } from './app.firebase.config';
@@ -57,6 +58,7 @@ import { IonicStorageModule } from '@ionic/storage';
     StatusBar,
     SplashScreen,
     Geolocation,
+    Camera,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

@@ -1,9 +1,12 @@
+import { MapsPage } from './../maps/maps';
+import { OrderByPipe } from './../../pipes/order-by/order-by';
 import { Component, ViewChild } from '@angular/core';
 import { Content, IonicPage, NavController, NavParams, LoadingController, ModalController, ActionSheetButton, ActionSheetController } from 'ionic-angular';
 import { AngularFirestoreCollection, AngularFirestore } from 'angularfire2/firestore';
 import { Observable } from 'rxjs';
 import { Tchat } from '../../models/Tchat';
 import { Storage } from '@ionic/storage';
+import { Camera, CameraOptions } from '@ionic-native/camera';
 
 /**
  * Generated class for the TchatPage page.
@@ -38,7 +41,7 @@ export class TchatPage {
   constructor(public navCtrl: NavController, private afs: AngularFirestore,
     public navParams: NavParams, public loadingCtrl: LoadingController,
     public modalCtrl: ModalController, public actionSheetCtrl : ActionSheetController,
-    private storage: Storage, ) {
+    private storage: Storage, private camera: Camera) {
     this.storage.get('user').then((val) => {
       if (val != null) {
         console.log('Your username is ', val);
@@ -48,6 +51,10 @@ export class TchatPage {
       }
     });
   }
+  logout(){
+    this.navCtrl.setRoot('MapsPage');
+    this.storage.clear();
+  }
 
   ionViewWillEnter() {
     let loadingPopup = this.loadingCtrl.create({
@@ -55,14 +62,15 @@ export class TchatPage {
       content: ''
     });
     //loadingPopup.present();
-    this.itemsCollection = this.afs.collection('tchats/'); //ref()
-    this.collection = this.itemsCollection.valueChanges().subscribe(articles_ => {
+    var test = this.afs.collection('tchats/', ref => ref.orderBy('sendDate', 'asc')).valueChanges().subscribe(articles_ => {
       this.arr = articles_;
+      console.log(this.arr);
       //loadingPopup.dismiss()
-    }, err=> {
+    }, err => {
       //loadingPopup.dismiss();
       console.log(err);
-    });
+    });;
+
 
   }
 
@@ -85,6 +93,7 @@ export class TchatPage {
     })
       .then((result) => {
         this.message = '';
+        this.file = false;
         loading.dismiss();
       })
       .catch((error) => {
@@ -124,16 +133,47 @@ export class TchatPage {
 
 
   useCamera(){
-    this.image = 'assets/imgs/no_image.png';
-    this.file = true;
+    const options: CameraOptions = {
+      quality: 40,
+      destinationType: this.camera.DestinationType.DATA_URL,
+      encodingType: this.camera.EncodingType.JPEG,
+      mediaType: this.camera.MediaType.PICTURE
+    }
+
+    this.camera.getPicture(options).then((imageData) => {
+      // imageData is either a base64 encoded string or a file URI
+      // If it's base64 (DATA_URL):
+      this.image = 'data:image/jpeg;base64,' + imageData;
+      this.file = true;
+    }, (err) => {
+      // Handle error
+    });
   }
 
   useGallery(){
-    
+    const options: CameraOptions = {
+      quality: 40,
+      destinationType: this.camera.DestinationType.DATA_URL,
+      sourceType: this.camera.PictureSourceType.PHOTOLIBRARY,
+      encodingType: this.camera.EncodingType.JPEG,
+      mediaType: this.camera.MediaType.PICTURE,
+      targetWidth : 100,
+      targetHeight : 100
+    }
+
+    this.camera.getPicture(options).then((imageData) => {
+      // imageData is either a base64 encoded string or a file URI
+      // If it's base64 (DATA_URL):
+      this.image = 'data:image/jpeg;base64,' + imageData;
+      this.file = true;
+    }, (err) => {
+      // Handle error
+    });
   }
 
   close(){
     this.file = false;
+    this.image = 'undefined';
   }
 
 
